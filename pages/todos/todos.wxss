@@ -1,0 +1,75 @@
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: row; 
+}
+
+input {
+  line-height: 80rpx;
+  height: 80rpx;
+  flex: 1 1 auto;
+  border:5rpx solid #ccc;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  padding-left: 20rpx;
+  margin: 10rpx;
+}
+
+.add {
+  width: 80rpx;
+  height: 80rpx;
+  flex: 0 0 auto;
+  margin: 10rpx 15rpx;
+}
+
+.body {
+  flex-basis: 1;
+  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 10rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10rpx;
+}
+
+.todos {
+  flex: 1;
+  overflow: auto;
+}
+
+
+.todo {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 2rpx solid #ccc;
+}
+
+.todo-content {
+  flex: 1 1 auto;
+}
+
+.icon {
+  width: 50rpx;
+  height: 50rpx;
+  flex: 0 0 auto;
+  margin: 0 5rpx;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.filter {
+  flex: 1 1 auto;
+  border: 1px solid pink;
+  text-align: center;
+  line-height: 100rpx;
+  border-radius: 50rpx;
+  margin: 10rpx;
+}
+
+

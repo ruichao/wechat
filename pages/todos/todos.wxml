@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="header">
+    <input placeholder="What needs to be done?" bindinput="bindInput" />
+    <image class="add" src="../../resources/addition_fill.png" bindtap="addTodo"></image>
+  </view>
+
+  <view class="body">
+    <scroll-view scroll-y="true" class="todos">
+      <view>
+        <view class="todo" wx:for="{{todos}}" wx:for-item="todo" wx:key="name">
+          <image class="icon" src="../../resources/{{todo.state}}.png"></image>
+          <view class="todo-content">{{todo.name}}</view>
+          <image class="icon" src="../../resources/delete.png"></image>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="footer">
+    <view class="filter">ALL</view>
+    <view class="filter">Active</view>
+    <view class="filter">Finished</view>
+  </view>
+</view>  
