@@ -42,7 +42,9 @@ input {
 .todo {
   display: flex;
   flex-direction: row;
-  border-bottom: 2rpx solid #ccc;
+  background-color: #ccc;
+  margin: 20rpx;
+  padding: 10rpx;
 }
 
 .todo-content {
@@ -72,4 +74,6 @@ input {
   margin: 10rpx;
 }
 
-
+.active {
+  background-color: lightgreen;
+}

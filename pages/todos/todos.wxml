@@ -1,24 +1,37 @@
+<wxs module="m">
+var getDisplayTodos = function(todos, filter) {
+  if (filter !== 'active' && filter !== 'finished') {
+    return todos;
+  }
+  return todos.filter(function(todo) {
+    return todo.state === filter
+  });
+}
+
+module.exports.getDisplayTodos = getDisplayTodos;
+</wxs>
+
 <view class="container">
   <view class="header">
-    <input placeholder="What needs to be done?" bindinput="bindInput" />
+    <input placeholder="What needs to be done?" bindinput="bindInput" value="{{inputName}}" />
     <image class="add" src="../../resources/addition_fill.png" bindtap="addTodo"></image>
   </view>
 
   <view class="body">
     <scroll-view scroll-y="true" class="todos">
       <view>
-        <view class="todo" wx:for="{{todos}}" wx:for-item="todo" wx:key="name">
-          <image class="icon" src="../../resources/{{todo.state}}.png"></image>
+        <view class="todo" wx:for="{{m.getDisplayTodos(todos, filter)}}" wx:for-item="todo" wx:key="name">
+          <image class="icon" src="../../resources/{{todo.state}}.png" data-id="{{todo.id}}" bindtap="toggleState"></image>
           <view class="todo-content">{{todo.name}}</view>
-          <image class="icon" src="../../resources/delete.png"></image>
+          <image class="icon" src="../../resources/delete.png" data-id="{{todo.id}}" bindtap="deleteTodo"></image>
         </view>
       </view>
     </scroll-view>
   </view>
 
   <view class="footer">
-    <view class="filter">ALL</view>
-    <view class="filter">Active</view>
-    <view class="filter">Finished</view>
+    <view data-filter='all' data-tt="{{filter}}" class="filter {{filter === 'all' ? 'active':'te'}}" bindtap="changeFilter">ALL</view>
+    <view data-filter='active' class="filter {{filter === 'active' ? 'active':'tue'}}" bindtap="changeFilter">Active</view>
+    <view data-filter='finished' class="filter {{filter === 'finished' ? 'active':''}}" bindtap="changeFilter">Finished</view>
   </view>
-</view>  
+</view>
