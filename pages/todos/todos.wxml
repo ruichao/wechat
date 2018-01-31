@@ -13,7 +13,7 @@ module.exports.getDisplayTodos = getDisplayTodos;
 
 <view class="container">
   <view class="header">
-    <input placeholder="What needs to be done?" bindinput="bindInput" value="{{inputName}}" />
+    <input placeholder="What needs to be done?" bindinput="bindInput" bindconfirm="addTodo" value="{{inputName}}" auto-focus/>
     <image class="add" src="../../resources/addition_fill.png" bindtap="addTodo"></image>
   </view>
 
@@ -22,7 +22,7 @@ module.exports.getDisplayTodos = getDisplayTodos;
       <view>
         <view class="todo" wx:for="{{m.getDisplayTodos(todos, filter)}}" wx:for-item="todo" wx:key="name">
           <image class="icon" src="../../resources/{{todo.state}}.png" data-id="{{todo.id}}" bindtap="toggleState"></image>
-          <view class="todo-content">{{todo.name}}</view>
+          <view class="todo-content" data-id="{{todo.id}}" bindtap="toggleState">{{todo.name}}</view>
           <image class="icon" src="../../resources/delete.png" data-id="{{todo.id}}" bindtap="deleteTodo"></image>
         </view>
       </view>
@@ -30,8 +30,8 @@ module.exports.getDisplayTodos = getDisplayTodos;
   </view>
 
   <view class="footer">
-    <view data-filter='all' data-tt="{{filter}}" class="filter {{filter === 'all' ? 'active':'te'}}" bindtap="changeFilter">ALL</view>
-    <view data-filter='active' class="filter {{filter === 'active' ? 'active':'tue'}}" bindtap="changeFilter">Active</view>
+    <view data-filter='all' class="filter {{filter === 'all' ? 'active':''}}" bindtap="changeFilter">ALL</view>
+    <view data-filter='active' class="filter {{filter === 'active' ? 'active':''}}" bindtap="changeFilter">Active</view>
     <view data-filter='finished' class="filter {{filter === 'finished' ? 'active':''}}" bindtap="changeFilter">Finished</view>
   </view>
 </view>
